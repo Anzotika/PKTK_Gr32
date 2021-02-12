@@ -64,3 +64,16 @@ class IPv4:
     # Returns properly formatted IPv4 address
     def ipv4(self, addr):
         return '.'.join(map(str, addr))
+    
+class ICMP:
+
+    def __init__(self, raw_data):
+        self.type, self.code, self.checksum = struct.unpack('! B B H', raw_data[:4])
+        self.data = raw_data[4:]
+class HTTP:
+
+    def __init__(self, raw_data):
+        try:
+            self.data = raw_data.decode('utf-8')
+        except:
+            self.data = raw_data
