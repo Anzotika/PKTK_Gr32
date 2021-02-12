@@ -1,6 +1,7 @@
 import socket
 import struct
 from general import *
+import time
 
 
 class Ethernet:
@@ -13,3 +14,39 @@ class Ethernet:
         self.src_mac = get_mac_addr(src)
         self.proto = socket.htons(prototype)
         self.data = raw_data[14:]
+        
+class UDP:
+
+    def __init__(self, raw_data):
+        self.src_port, self.dest_port, self.size = struct.unpack('! H H 2x H', raw_data[:8])
+        self.data = raw_data[8:]
+        
+class TCP:
+
+    def __init__(self, raw_data):
+        (self.src_port, self.dest_port, self.sequence, self.acknowledgment, offset_reserved_flags) = struct.unpack(
+            '! H H L L H', raw_data[:14])
+        offset = (offset_reserved_flags >> 12) * 4
+        self.flag_urg = (offset_reserved_flags & 32) >> 5
+        self.flag_ack = (offset_reserved_flags & 16) >> 4
+        self.flag_psh = (offset_reserved_flags & 8) >> 3
+        self.flag_rst = (offset_reserved_flags & 4) >> 2
+        self.flag_syn = (offset_reserved_flags & 2) >> 1
+        self.flag_fin = offset_reserved_flags & 1
+        self.data = raw_data[offset:]
+        
+class Pcap:
+
+    def __init__(self, filename, link_type=1):
+        self.pcap_file = open(filename, 'wb')
+        self.pcap_file.write(struct.pack('@ I H H i I I I', 0xa1b2c3d4, 2, 4, 0, 0, 65535, link_type))
+
+    def write(self, data):
+        ts_sec, ts_usec = map(int, str(time.time()).split('.'))
+        length = len(data)
+        self.pcap_file.write(struct.pack('@ I I I I', ts_sec, ts_usec, length, length))
+        self.pcap_file.write(data)
+
+    def close(self):
+        self.pcap_file.close()
+        
