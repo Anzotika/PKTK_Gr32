@@ -1,12 +1,12 @@
-#PKTK
+# PKTK
 **Ky projekt është krijuar si detyrë në lëndën Siguria në Internet FIEK/UP**
 
-##Funksionaliteti
+## Funksionaliteti
 Ky mini aplikacion përdoret për përgjimin e kanalit të komunikimit ose ndryshe një lloj sulmi Man-in-the-middle.
 Konvertimi i bitave në të dhëna i mundëson njeriut leximin e tyre. Nëse shfaqet dëshira për krijimin e një API për Network me Python, ky i fundit është i mundur me monitorim të një rrjeti përkatës në një trafik në nivel të të dhënave.
 Ky API mundëson ndërhyrjen në ato të dhëna si palë e tretë.
 
-###Çfarë mund të përgjohet?
+### Çfarë mund të përgjohet?
 -	Trafiku i postës elektronike,
 -	fjalëkalimet e FTP,
 -	trafiku në internet ,
@@ -15,17 +15,17 @@ Ky API mundëson ndërhyrjen në ato të dhëna si palë e tretë.
 -	seanca bisede, 
 -	trafiku DNS e shumë të tjera.
 
-##Vegla dhe gjuha programuese:
+## Vegla dhe gjuha programuese:
 Vegla e përdorur për krijimin e API-së është `PyCharm`
 `Python`
 `Tkinter (GUI), Python Package`
 
-##Parakushtet për ekzekutimin e programit
+## Parakushtet për ekzekutimin e programit
 1.	Të bëhet run në SO Kali Linux
 2.	Të jetë i instaluar version 3 i python, Python3
 3.	Të jetë i hapur i gjithë folderi përkatës
 
-##Ekzekutimi
+## Ekzekutimi
 > Startimi I programit:
 Ekzekutohet në terminal me komandat 
 `sudo python3 sniffer.py`
@@ -34,7 +34,7 @@ Ekzektuohet në terminal me komandën
 `Ctrl+C`
 
 
-##Rrjedha e programit
+## Rrjedha e programit
 1.	Ekzekutohet komanda e lartpërmenur në terminal
 2.	Hapet dritarja për komunikim
 3.	Klikohet butoni “Klikoni”
@@ -45,7 +45,7 @@ Ekzektuohet në terminal me komandën
 ![3](https://user-images.githubusercontent.com/58053060/107862321-58b8ad80-6e4c-11eb-8e48-420cc81a09aa.png)
 6.	Mbyllet programi në terminal
 
-###Members
+### Members
 Anzotikë Bilalli
 Ensare Islami
 Florian Bunjaku
